@@ -8,5 +8,15 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity": "^3.501.0",
+    "amazon-cognito-identity-js": "^6.3.7",
+    "aws-sdk": "^2.1545.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwk-to-pem": "^2.0.5",
+    "node-fetch": "^3.3.2"
+  }
 }
