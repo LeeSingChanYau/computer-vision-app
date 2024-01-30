@@ -62,6 +62,25 @@ app.post('/login', (req, res) => {
   });
 });
 
+app.post('/verify', (req, res) => {
+  const { email, code } = req.body;
+
+  const params = {
+    ClientId: process.env.CLIENT_ID,
+    Username: email,
+    ConfirmationCode: code,
+  };
+
+  cognito.confirmSignUp(params, (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: 'Wrong code' });
+    }
+    console.log(data);
+    res.json({ message: 'Account confirmed successfully' });
+  });
+});
+
 app.get('/', (req, res) => {
   res.send('Welcome to your Express.js server!');
 });
