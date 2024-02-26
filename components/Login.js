@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Signup({ navigation }) {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,15 +14,15 @@ export default function Signup({ navigation }) {
     setPassword(t);
   }
 
-  function handleSignUp() {
+  function handleLogin() {
     axios
-      .post('http://localhost:8080/signup', {
+      .post('http://localhost:8080/login', {
         email: email,
         password: password,
       })
       .then(function (response) {
         console.log(response);
-        navigation.navigate('Verify', {
+        navigation.navigate('Dashboard', {
           email: email,
         });
       })
@@ -39,7 +39,7 @@ export default function Signup({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
-        <Text>Signup</Text>
+        <Text>Login</Text>
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -52,10 +52,10 @@ export default function Signup({ navigation }) {
           onChangeText={onChangePassword}
           value={password}
         />
-        <Button title="Sign Up" onPress={handleSignUp} />
+        <Button title="Log In" onPress={handleLogin} />
         <Button
-          title="Already have an account? Log In"
-          onPress={() => navigation.navigate('Login')}
+          title="Don't have an account? Sign Up"
+          onPress={() => navigation.navigate('Signup')}
         />
       </View>
     </View>
