@@ -12,7 +12,7 @@ export default function Verify({ route, navigation }) {
 
   function handleVerify() {
     axios
-      .post('http://localhost:8080/verify', {
+      .post('http://10.0.0.67:8080/verify', {
         email: email,
         code: code,
       })
@@ -27,15 +27,19 @@ export default function Verify({ route, navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
-        <Text>Verify</Text>
-        <Text>{email}</Text>
+        <Text style={styles.text}>Verify</Text>
+        <Text style={styles.text}>{email}</Text>
         <TextInput
           style={styles.input}
           placeholder="Verification Code"
           onChangeText={onChangeCode}
           value={code}
         />
-        <Button title="Verify" onPress={handleVerify} />
+        <Button
+          title="Verify"
+          onPress={handleVerify}
+          color="rgb(255, 45, 85)"
+        />
       </View>
     </View>
   );
@@ -44,13 +48,11 @@ export default function Verify({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   subContainer: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -60,6 +62,11 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     borderRadius: 5,
+    borderColor: 'white',
+    backgroundColor: 'white',
     padding: 10,
+  },
+  text: {
+    color: 'rgb(255, 45, 85)',
   },
 });

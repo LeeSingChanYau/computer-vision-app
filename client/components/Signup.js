@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Login({ navigation }) {
+export default function Signup({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,15 +14,14 @@ export default function Login({ navigation }) {
     setPassword(t);
   }
 
-  function handleLogin() {
+  function handleSignUp() {
     axios
-      .post('http://localhost:8080/login', {
+      .post('http://10.0.0.67:8080/signup', {
         email: email,
         password: password,
       })
       .then(function (response) {
-        console.log(response);
-        navigation.navigate('Dashboard', {
+        navigation.navigate('Verify', {
           email: email,
         });
       })
@@ -38,10 +37,18 @@ export default function Login({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <View style={styles.logo}>
+        <Image
+          source={require('../assets/AJ1.png')}
+          style={{ width: 200, height: 200 }}
+        />
+        <Text style={styles.text}>What are those?</Text>
+      </View>
       <View style={styles.subContainer}>
-        <Text>Login</Text>
+        <Text style={styles.text}>Signup</Text>
         <TextInput
           style={styles.input}
+          autoCapitalize="none"
           placeholder="Email"
           onChangeText={onChangeEmail}
           value={email}
@@ -49,13 +56,19 @@ export default function Login({ navigation }) {
         <TextInput
           style={styles.input}
           placeholder="Password"
+          secureTextEntry={true}
           onChangeText={onChangePassword}
           value={password}
         />
-        <Button title="Log In" onPress={handleLogin} />
         <Button
-          title="Don't have an account? Sign Up"
-          onPress={() => navigation.navigate('Signup')}
+          title="Sign Up"
+          onPress={handleSignUp}
+          color={'rgb(255, 45, 85)'}
+        />
+        <Button
+          title="Already have an account? Log In"
+          onPress={() => navigation.navigate('Login')}
+          color={'rgb(255, 45, 85)'}
         />
       </View>
     </View>
@@ -65,13 +78,18 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   subContainer: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flex: 3,
+    alignItems: 'center',
+  },
+  text: {
+    color: 'rgb(255, 45, 85)',
+  },
+  logo: {
+    flex: 3,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -81,6 +99,8 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     borderRadius: 5,
+    borderColor: 'white',
+    backgroundColor: 'white',
     padding: 10,
   },
 });

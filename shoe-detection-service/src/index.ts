@@ -1,7 +1,10 @@
 import express, { Request, Response } from 'express';
 import * as tf from '@tensorflow/tfjs-node';
 import sharp from 'sharp';
+import fs from 'fs';
+import multer from 'multer';
 
+const upload = multer({storage: multer.memoryStorage()})
 const app = express();
 const port = 3000;
 
@@ -36,9 +39,9 @@ async function loadModel() {
   }
 }
 
-async function loadImage(imagePath: string) {
-   const imageBuffer = await sharp(imagePath)
-     .resize(180, 180) 
+async function loadImage(image: Buffer) {
+   const imageBuffer = await sharp(image)
+     .resize(180, 180)
      .toFormat('png')
      .toBuffer();
    const imageTensor = tf.node
@@ -47,7 +50,7 @@ async function loadImage(imagePath: string) {
    return imageTensor;
 }
 
-async function predictImage(imagePath: string) {
+async function predictImage(imagePath: Buffer) {
   const model = await loadModel();
   const imageTensor = await loadImage(imagePath);
   const prediction = model.predict(imageTensor) as tf.Tensor;
@@ -56,9 +59,19 @@ async function predictImage(imagePath: string) {
 }
 
 
-app.get('/', async (req: Request, res: Response) => {
-  const prediction = await predictImage('./images/jordan_4_eval.png');
-  res.status(200).send({ prediction });
+app.post('/detect', upload.single('shoeImage'), async (req: Request, res: Response) => {
+  if(!req.file) {
+    res.status(400).send({ error: 'Please upload an image' });
+    return;
+  }
+  try {
+    const imageBuffer = req.file.buffer;
+    const prediction = await predictImage(imageBuffer!);
+    res.status(200).send({ prediction });
+  } catch (error) {
+    console.error('Error processing image:', error);
+    res.status(500).send({ error: 'Error processing image' });
+  }
 });
 
 app.listen(port, () => {

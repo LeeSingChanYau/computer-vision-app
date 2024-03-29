@@ -6,10 +6,11 @@ export default function Dashboard({ route, navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
-        <Text>Email: {email}</Text>
+        <Text style={styles.text}>Email: {email}</Text>
         <Button
           title="Detect Shoe"
           onPress={() => navigation.navigate('Detect')}
+          color={'rgb(255, 45, 85)'}
         />
       </View>
     </View>
@@ -19,13 +20,11 @@ export default function Dashboard({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   subContainer: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     margin: 50,
   },
@@ -36,5 +35,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
+  },
+  text: {
+    color: 'rgb(255, 45, 85)',
   },
 });

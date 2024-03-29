@@ -4,7 +4,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const AWS = require('aws-sdk');
-const jordanModel = require('./jordanModel');
 const multer = require('multer');
 
 var storage = multer.memoryStorage();
@@ -123,19 +122,19 @@ app.post('/changepassword', async (req, res) => {
   });
 });
 
-app.post('/detect', upload.single('shoeImage'), async (req, res) => {
-  try {
-    console.log('req.file:', req.file);
-    const imageFile = req.file.buffer;
-    console.log('req.file.buffer:', req.file.buffer);
-    const data = await jordanModel.detectShoes(imageFile);
-    console.log('CustomLabels:', data);
-    res.json({ message: 'Shoe detected successfully', data: data });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: 'Error detecting shoe' });
-  }
-});
+// app.post('/detect', upload.single('shoeImage'), async (req, res) => {
+//   try {
+//     console.log('req.file:', req.file);
+//     const imageFile = req.file.buffer;
+//     console.log('req.file.buffer:', req.file.buffer);
+//     const data = await jordanModel.detectShoes(imageFile);
+//     console.log('CustomLabels:', data);
+//     res.json({ message: 'Shoe detected successfully', data: data });
+//   } catch (err) {
+//     console.error(err);
+//     return res.status(500).json({ error: 'Error detecting shoe' });
+//   }
+// });
 
 app.get('/', (req, res) => {
   res.send('Welcome to your Express.js server!');
