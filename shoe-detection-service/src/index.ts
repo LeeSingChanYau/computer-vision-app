@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import * as tf from '@tensorflow/tfjs-node';
 import sharp from 'sharp';
-import fs from 'fs';
 import multer from 'multer';
+import { shoeInfo } from '../constants/shoeInfo';
 
 const upload = multer({storage: multer.memoryStorage()})
 const app = express();
@@ -54,8 +54,14 @@ async function predictImage(imagePath: Buffer) {
   const model = await loadModel();
   const imageTensor = await loadImage(imagePath);
   const prediction = model.predict(imageTensor) as tf.Tensor;
-  const predictionData = await prediction.data();
-  return predictionData;
+  const predictionData = await prediction.data(); 
+  let maxPrediction = [0,0];
+  for(let key in predictionData) {
+    if(!maxPrediction || predictionData[key] > maxPrediction[1]) {
+      maxPrediction = [parseInt(key), predictionData[key]];
+    }
+  }
+  return maxPrediction;
 }
 
 
