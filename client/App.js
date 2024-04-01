@@ -28,11 +28,11 @@ export default function App() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#ff0000', // Change the background color of the header here
+            backgroundColor: '#ff0000', 
           },
-          headerTintColor: '#fff', // Change the text color of the header buttons (e.g., back button)
+          headerTintColor: '#fff', 
           headerTitleStyle: {
-            fontWeight: 'bold', // You can customize the font weight, size, etc., of the header title
+            fontWeight: 'bold', 
           },
         }}
       >
