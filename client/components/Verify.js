@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import { useState } from 'react';
-import axios from 'axios';
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Verify({ route, navigation }) {
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
   const { email } = route.params;
 
   function onChangeCode(t) {
@@ -12,7 +12,7 @@ export default function Verify({ route, navigation }) {
 
   function handleVerify() {
     axios
-      .post('http://10.0.0.67:8080/verify', {
+      .post("http://10.0.0.67:8080/verify", {
         email: email,
         code: code,
       })
@@ -48,13 +48,13 @@ export default function Verify({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   subContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   input: {
     height: 40,
@@ -62,11 +62,11 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: 'white',
-    backgroundColor: 'white',
+    borderColor: "white",
+    backgroundColor: "white",
     padding: 10,
   },
   text: {
-    color: 'rgb(255, 45, 85)',
+    color: "rgb(255, 45, 85)",
   },
 });

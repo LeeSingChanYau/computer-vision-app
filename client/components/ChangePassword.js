@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import { useState } from 'react';
-import axios from 'axios';
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { useState } from "react";
+import axios from "axios";
+import Colors from "../constants/Colors";
 
 export default function ChangePassword({ route, navigation }) {
-  const [code, setCode] = useState('');
-  const [newPassword, setNewPassword] = useState('');
+  const [code, setCode] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const { email } = route.params;
 
   function onChangeCode(t) {
@@ -17,7 +18,7 @@ export default function ChangePassword({ route, navigation }) {
 
   function handleChangePassword() {
     axios
-      .post('http://10.0.0.67:8080/changepassword', {
+      .post("http://10.0.0.67:8080/changepassword", {
         email: email,
         password: newPassword,
         code: code,
@@ -60,13 +61,13 @@ export default function ChangePassword({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   subContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   input: {
     height: 40,
@@ -74,8 +75,8 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: 'white',
-    backgroundColor: 'white',
+    borderColor: "white",
+    backgroundColor: "white",
     padding: 10,
   },
   text: {

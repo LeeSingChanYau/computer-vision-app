@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { StyleSheet, Text, View, TextInput, Button, Image } from "react-native";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function ForgotPassword({ navigation }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function onChangeEmail(t) {
     setEmail(t);
@@ -16,12 +16,12 @@ export default function ForgotPassword({ navigation }) {
 
   function handleResetPassword() {
     axios
-      .post('http://10.0.0.67:8080/forgotpassword', {
+      .post("http://10.0.0.67:8080/forgotpassword", {
         email: email,
       })
       .then(function (response) {
         console.log(response);
-        navigation.navigate('ChangePassword', {
+        navigation.navigate("ChangePassword", {
           email: email,
         });
       })
@@ -39,7 +39,7 @@ export default function ForgotPassword({ navigation }) {
     <View style={styles.container}>
       <View style={styles.logo}>
         <Image
-          source={require('../assets/AJ1.png')}
+          source={require("../../../assets/AJ1.png")}
           style={{ width: 200, height: 200 }}
         />
         <Text style={styles.text}>What are those?</Text>
@@ -56,12 +56,12 @@ export default function ForgotPassword({ navigation }) {
         <Button
           title="Reset"
           onPress={handleResetPassword}
-          color={'rgb(255, 45, 85)'}
+          color={"rgb(255, 45, 85)"}
         />
         <Button
           title="Don't have an account? Sign Up"
-          onPress={() => navigation.navigate('Signup')}
-          color={'rgb(255, 45, 85)'}
+          onPress={() => navigation.navigate("Signup")}
+          color={"rgb(255, 45, 85)"}
         />
       </View>
     </View>
@@ -71,20 +71,20 @@ export default function ForgotPassword({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   subContainer: {
     flex: 3,
-    alignItems: 'center',
+    alignItems: "center",
   },
   logo: {
     flex: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
-    color: 'rgb(255, 45, 85)',
+    color: "rgb(255, 45, 85)",
   },
   input: {
     height: 40,
@@ -92,8 +92,8 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: 'white',
-    backgroundColor: 'white',
+    borderColor: "white",
+    backgroundColor: "white",
     padding: 10,
   },
 });

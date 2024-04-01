@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, TextInput, Button, Image } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-export default function Signup({ navigation }) {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,14 +15,14 @@ export default function Signup({ navigation }) {
     setPassword(t);
   }
 
-  function handleSignUp() {
+  function handleLogin() {
     axios
-      .post("http://10.0.0.67:8080/signup", {
+      .post("http://10.0.0.67:8080/login", {
         email: email,
         password: password,
       })
       .then(function (response) {
-        navigation.navigate("Verify", {
+        navigation.navigate("Dashboard", {
           email: email,
         });
       })
@@ -41,13 +41,13 @@ export default function Signup({ navigation }) {
       <View style={styles.container}>
         <View style={styles.logo}>
           <Image
-            source={require("../assets/AJ1.png")}
+            source={require("../../../assets/AJ1.png")}
             style={{ width: 200, height: 200 }}
           />
           <Text style={styles.text}>What are those?</Text>
         </View>
         <View style={styles.subContainer}>
-          <Text style={styles.text}>Signup</Text>
+          <Text style={styles.text}>Login</Text>
           <TextInput
             style={styles.input}
             autoCapitalize="none"
@@ -63,13 +63,18 @@ export default function Signup({ navigation }) {
             value={password}
           />
           <Button
-            title="Sign Up"
-            onPress={handleSignUp}
+            title="Log In"
+            onPress={handleLogin}
             color={"rgb(255, 45, 85)"}
           />
           <Button
-            title="Already have an account? Log In"
-            onPress={() => navigation.navigate("Login")}
+            title="Don't have an account? Sign Up"
+            onPress={() => navigation.navigate("Signup")}
+            color={"rgb(255, 45, 85)"}
+          />
+          <Button
+            title="Forgot your password? Reset it"
+            onPress={() => navigation.navigate("ForgotPassword")}
             color={"rgb(255, 45, 85)"}
           />
         </View>
@@ -88,14 +93,14 @@ const styles = StyleSheet.create({
     flex: 3,
     alignItems: "center",
   },
-  text: {
-    color: "rgb(255, 45, 85)",
-  },
   logo: {
     flex: 3,
     marginBottom: 100,
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    color: "rgb(255, 45, 85)",
   },
   input: {
     height: 40,
