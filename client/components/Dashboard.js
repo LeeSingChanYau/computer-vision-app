@@ -1,7 +1,7 @@
 import { StyleSheet, Text, Button, View, TextInput } from 'react-native';
 
 export default function Dashboard({ route, navigation }) {
-  const { email } = route.params;
+  // const { email } = route.params;
 
   return (
     <View style={styles.container}>

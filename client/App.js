@@ -1,15 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Signup from './components/Signup';
-import Login from './components/Login';
-import Verify from './components/Verify';
-import ForgotPassword from './components/ForgotPassword';
-import ChangePassword from './components/ChangePassword';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Dashboard from './components/Dashboard';
-import Detect from './components/Detect';
-import ViewImage from './components/ViewImage';
+import Verify from "./components/Verify";
+import ChangePassword from "./components/ChangePassword";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Dashboard from "./components/Dashboard";
+import Detect from "./components/Detect";
+import ViewImage from "./components/ViewImage";
+import Signup from "./components/screens/Registration/Signup";
+import Login from "./components/screens/Login/Login";
+import ForgotPassword from "./components/screens/Login/ForgotPassword";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,8 +15,8 @@ const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: 'rgb(255, 45, 85)',
-    background: '#181818',
+    primary: "rgb(255, 45, 85)",
+    background: "#181818",
   },
 };
 
@@ -28,11 +26,11 @@ export default function App() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#ff0000', // Change the background color of the header here
+            backgroundColor: "#ff0000", // Change the background color of the header here
           },
-          headerTintColor: '#fff', // Change the text color of the header buttons (e.g., back button)
+          headerTintColor: "#fff", // Change the text color of the header buttons (e.g., back button)
           headerTitleStyle: {
-            fontWeight: 'bold', // You can customize the font weight, size, etc., of the header title
+            fontWeight: "bold", // You can customize the font weight, size, etc., of the header title
           },
         }}
       >
