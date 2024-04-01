@@ -15,13 +15,14 @@ export default function ViewImage({route}) {
     <View style={styles.container}>
       <View style={styles.imageView}>
         <Image
-          source={{ uri: 'data:image/png;base64,' + base64 }} 
+          source={{ uri: 'data:image/png;base64,' + base64 }}
           style={{ width: screenWidth, height: screenHeight }}
           resizeMode="contain"
         />
       </View>
       <View style={styles.textView}>
-        <Text style={styles.text}>Jordan 1</Text>
+        <Text style={styles.titleText}>Jordan {prediction[0] + 1}</Text>
+        <Text style={styles.subtitleText}>Confidence: {prediction[1]}</Text>
       </View>
     </View>
   );
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
     width: screenWidth,
     justifyContent: 'center',
     alignContent: 'center',
+    marginBottom: 30,
   },
   image: {
     width: '100%',
@@ -43,11 +45,21 @@ const styles = StyleSheet.create({
   },
   textView: {
     flex: 0.25,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignContent: 'center',
+    backgroundColor: '#ff0000',
+    borderRadius: 20,
   },
-  text: {
+  titleText: {
     fontSize: 24,
     fontWeight: 'bold',
-  }
+    textAlign: 'center',
+    color: 'white',
+  },
+  subtitleText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white',
+  },
 });
