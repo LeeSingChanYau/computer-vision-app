@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Button, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function Dashboard({ route, navigation }) {
   const { email } = route.params;
@@ -7,11 +7,9 @@ export default function Dashboard({ route, navigation }) {
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <Text style={styles.text}>Email: {email}</Text>
-        <Button
-          title="Detect Shoe"
-          onPress={() => navigation.navigate('Detect')}
-          color={'rgb(255, 45, 85)'}
-        />
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Detect')}>
+          <Text style={styles.text}>Detect Shoe</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -27,6 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     margin: 50,
+    gap: 20,
   },
   input: {
     height: 40,
@@ -37,6 +36,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text: {
-    color: 'rgb(255, 45, 85)',
+    color: 'white',
+    fontSize: 24,
+  },
+  button: {
+    backgroundColor: '#ff0000', // Example button background color
+    padding: 10,
+    borderRadius: 20,
   },
 });
