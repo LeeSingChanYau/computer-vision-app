@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 export default function Login({ navigation }) {
@@ -29,11 +29,6 @@ export default function Login({ navigation }) {
         console.log(error);
       });
   }
-
-  useEffect(() => {
-    console.log(email);
-    console.log(password);
-  }, [email, password]);
 
   return (
     <View style={styles.container}>

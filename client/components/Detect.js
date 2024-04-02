@@ -53,7 +53,6 @@ export default function Detect({ route, navigation }) {
             },
           }
         );
-        console.log('prediction:', response.data.prediction);
         navigation.navigate('ViewImage', {
           base64: photo.base64,
           prediction: response.data.prediction,
