@@ -13,8 +13,9 @@ What things you need to install:
 - Git
 - Node.js and npm
 
-![Login](images/login.png "Login Image")
+<img src="images/login.png" alt="Login Image" title="Login Image" width="200"/>
 
-![Camera](images/camera.jpeg "Camera Image")
+<img src="images/camera.jpeg" alt="Camera Image" title="Camera Image" width="200"/>
 
-![View Image](images/view_image.PNG "ViewImage Image")
+<img src="images/view_image.PNG" alt="ViewImage Image" title="ViewImage Image" width="200"/>
+
