@@ -61,7 +61,12 @@ async function predictImage(imagePath: Buffer) {
       maxPrediction = [parseInt(key), predictionData[key]];
     }
   }
-  return maxPrediction;
+  const response = {
+    shoeName: shoeInfo[maxPrediction[0]].name,
+    description: shoeInfo[maxPrediction[0]].description,
+    confidence: maxPrediction[1],
+  };
+  return response;
 }
 
 
