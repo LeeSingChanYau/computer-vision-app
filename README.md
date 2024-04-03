@@ -12,3 +12,5 @@ What things you need to install:
 
 - Git
 - Node.js and npm
+
+![Login](images/login.png "Login Image")
