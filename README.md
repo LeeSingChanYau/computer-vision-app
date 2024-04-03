@@ -14,3 +14,7 @@ What things you need to install:
 - Node.js and npm
 
 ![Login](images/login.png "Login Image")
+
+![Camera](images/camera.jpeg "Camera Image")
+
+![View Image](images/view_image.png "ViewImage Image")
