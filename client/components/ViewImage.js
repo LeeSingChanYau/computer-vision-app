@@ -28,7 +28,10 @@ export default function ViewImage({route}) {
       </View>
       <View style={styles.textView}>
         <Text style={styles.titleText}> {prediction.shoeName}</Text>
-        <Text style={styles.subtitleText}>Confidence: {prediction.confidence * 100}%</Text>
+        <Text style={styles.subtitleText}>
+          Confidence:{' '}
+          {parseFloat((prediction.confidence * 100).toFixed(2))}%
+        </Text>
         <Text style={styles.descriptionText}>{normalizedDescription}</Text>
         <TouchableOpacity style={styles.button} onPress={handlePress}>
           <Text style={styles.buttonText}>View on StockX</Text>
