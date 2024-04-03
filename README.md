@@ -17,4 +17,4 @@ What things you need to install:
 
 ![Camera](images/camera.jpeg "Camera Image")
 
-![View Image](images/view_image.png "ViewImage Image")
+![View Image](images/view_image.PNG "ViewImage Image")
