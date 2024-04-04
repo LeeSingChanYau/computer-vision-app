@@ -12,3 +12,10 @@ What things you need to install:
 
 - Git
 - Node.js and npm
+
+<img src="images/login.png" alt="Login Image" title="Login Image" width="200"/> <img src="images/camera.jpeg" alt="Camera Image" title="Camera Image" width="200"/> <img src="images/view_image.PNG" alt="ViewImage Image" title="ViewImage Image" width="200"/>
+
+
+
+
+
