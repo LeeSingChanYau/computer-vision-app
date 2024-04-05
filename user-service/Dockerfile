@@ -1,20 +1,23 @@
-# Use a base image
-FROM node
+# Use the official Node.js 14 image as a parent image
+FROM node:14
 
-# Set the working directory
-WORKDIR /app
+# Set the working directory within the container
+WORKDIR /usr/src/app
 
-# Copy the requirements file
-COPY package*.json .
+# Copy package.json and package-lock.json (or yarn.lock) to the container
+COPY package*.json ./
 
-# Install the dependencies
+# Install any dependencies
 RUN npm install
 
-# Copy the application code
+# If you're using Yarn, you can run `yarn install` instead
+# RUN yarn install
+
+# Bundle the source code inside the Docker image
 COPY . .
 
-# Expose the necessary port
+# Expose the port your app runs on
 EXPOSE 8080
 
-# Define the command to run the application
-CMD ["npm", "run", "dev"]
+# Run the application in development mode with nodemon
+CMD ["node", "index.js"]
