@@ -30,7 +30,7 @@ tf.serialization.registerClass(L2);
 async function loadModel() {
   try {
     const model = await tf.loadLayersModel(
-      'file:///Users/leesingchan/Documents/React-Native/computer-vision-app/shoe-detection-service/models/jordan_model/model.json'
+      'file:///app/models/jordan_model/model.json'
     );
     return model;
   } catch (error) {
